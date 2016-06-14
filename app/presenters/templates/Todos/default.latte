@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="cs">
+<head>
+    <base href="{$basePath}/">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <title>{ifset title}{include title|striptags} | {/ifset}TodoMVC</title>
+    <link rel="stylesheet" href="assets/css/index.css">
+</head>
+<body>
+<section class="todoapp">
+    <div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+
+    <header class="header">
+        <a n:href="Todos:default"><h1>todos</h1></a>
+        {form newForm}
+            <input n:name="value" class="new-todo" placeholder="What needs to be done?" autofocus>
+        {/form}
+    </header>
+
+    <section class="main">
+        <label for="toggle-all">Mark all as complete</label>
+
+        <ul class="todo-list">
+            <li n:foreach="$todos as $todo" n:class="!!$todo->isDone ? completed">
+                <div class="view">
+                    <a n:href="Todos:changeStatus $todo->id, ($todo->isDone ? 'uncheck' : 'check')">
+                        <svg class="toggle" xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+                             viewBox="-10 -18 100 135">
+                            <circle cx="50" cy="50" r="50" fill="none" stroke="#ededed" stroke-width="3"></circle>
+                            <path n:if="$todo->isDone" fill="#5dc2af" d="M72 25L42 71 27 56l-4 4 20 20 34-52z"></path>
+                        </svg>
+                    </a>
+                    <label>{$todo->value}</label>
+                    <a n:href="Todos:remove $todo->id" class="btn destroy"></a>
+                </div>
+                {form editForm-$todo->id}
+                    <input n:name="value" class="edit" n:attr="value => $todo->value">
+                {/form}
+            </li>
+        </ul>
+    </section>
+
+    <footer class="footer">
+        <span class="todo-count">
+          <strong>{$countActive}</strong> item left
+        </span>
+        <ul class="filters">
+            <li n:foreach="$filters as $filterKey => list($filterTitle)">
+                <a n:href="Todos:default $filterKey" n:class="$filterKey == $activeFilter ? selected">{$filterTitle}</a>
+            </li>
+        </ul>
+        <a n:if="$countCompleted" n:href="Todos:clearCompleted" class="btn clear-completed">Clear completed</a>
+    </footer>
+</section>
+<footer class="info">
+    <p>Double-click to edit a todo</p>
+    <p>Created by <a href="http://twitter.com/zemistr">Zemistr</a></p>
+</footer>
+
+<script src="assets/js/jquery-3.0.0.min.js"></script>
+<script src="assets/js/index.js"></script>
+</body>
+</html>
