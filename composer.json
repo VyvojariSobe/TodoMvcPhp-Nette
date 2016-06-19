@@ -1,14 +1,15 @@
 {
-  "name": "vyvojarisobe/todomvc-nette",
+  "name": "vyvojarisobe/todomvcphp-nette",
   "description": "Example of TodoMVC in PHP Nette",
   "keywords": [
     "todo",
     "mvc",
     "todomvc",
     "nette",
+    "php",
     "example"
   ],
-  "homepage": "https://github.com/VyvojariSobe/todomvc-nette",
+  "homepage": "https://github.com/VyvojariSobe/TodoMvcPhp-Nette",
   "minimum-stability": "RC",
   "license": [
     "BSD",
