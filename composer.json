@@ -26,6 +26,7 @@
   ],
   "require": {
     "php": ">=7",
+    "ext-pdo_sqlite": "*",
     "nette/application": "^2.4",
     "nette/bootstrap": "^2.4",
     "nette/database": "^2.4",
