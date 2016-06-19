@@ -1,6 +1,6 @@
 {
   "name": "vyvojarisobe/todomvcphp-nette",
-  "description": "Example of TodoMVC in PHP Nette",
+  "description": "To Do list MVC example written in PHP in Nette framework.",
   "keywords": [
     "todo",
     "mvc",
